@@ -1,5 +1,5 @@
 <template>
-  <img class="logo" src="../assets/logo.png">
+  <img class="logo" src="../assets/Restaurant_logo.png">
   <h3>Sign Up</h3>
   <div class="register">
     <input type="name" v-model="name" placeholder="Enter your name" />
@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import axios  from "axios";
+import axios from "axios";
+
 export default {
   name: "SignUp",
   data() {
@@ -21,8 +22,18 @@ export default {
     }
   },
   methods: {
-    SignUp() {
+    async SignUp() {
       console.warn("SignUp", this.name, this.email, this.password);
+      let result = await axios.post("https://localhost:3000/users", {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      });
+      console.log(result);
+      if (result.status === 201) {
+          alert('Sign Up successfully!');
+      }
+      localStorage.setItem("user", JSON.stringify(result.data));
     }
   }
 }
