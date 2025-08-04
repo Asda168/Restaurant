@@ -6,6 +6,7 @@
     <input type="email" v-model="email" placeholder="E-mail@gmail.com">
     <input type="password" v-model="password" placeholder="Enter your password" />
     <button v-on:click="SignUp" class="signup">SignUp</button>
+    <p class="link-text">Back to <router-link to="/">Sign In</router-link></p>
   </div>
 </template>
 
@@ -24,16 +25,22 @@ export default {
   methods: {
     async SignUp() {
       console.warn("SignUp", this.name, this.email, this.password);
-      let result = await axios.post("https://localhost:3000/users", {
+      let result = await axios.post("http://localhost:3000/users", {
         name: this.name,
         email: this.email,
         password: this.password,
       });
       console.log(result);
       if (result.status === 201) {
-          alert('Sign Up successfully!');
+        localStorage.setItem("user", JSON.stringify(result.data));
+        this.$router.push({name: 'SignIn'});
       }
-      localStorage.setItem("user", JSON.stringify(result.data));
+    }
+  },
+  mounted() {
+    let user = localStorage.getItem("user");
+    if (user) {
+      this.$router.push({ name: "HomePage" });
     }
   }
 }
