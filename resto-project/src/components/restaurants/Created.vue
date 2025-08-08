@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import HeaderPage from "./Header.vue";
+import HeaderPage from "../layouts/Header.vue";
 export default {
   name: "CreatedPage",
   components: {

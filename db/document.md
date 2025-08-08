@@ -8,4 +8,4 @@
     json-server --watch db.json
 
 # Server: 
-    http://localhost:3000/users
+    http://loca`lhost:3000/users
