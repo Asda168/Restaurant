@@ -13,6 +13,18 @@
       "name": "Ouk Asda",
       "address": "oukasda@gmail.com",
       "contact": "1234567890"
+    },
+    {
+      "id": "60a0",
+      "name": "Testing",
+      "address": "hgbvfc",
+      "contact": "05883453"
+    },
+    {
+      "id": "3a5c",
+      "name": "Testing",
+      "address": "phnom penh",
+      "contact": "05883453"
     }
   ]
 }
